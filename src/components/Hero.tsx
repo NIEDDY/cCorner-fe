@@ -28,9 +28,9 @@ const Hero = () => {
             transition={{ delay: 0.2, type: "spring" }}
             className="inline-flex items-center gap-2 px-5 py-2 mb-6 bg-accent/20 backdrop-blur-md text-accent-foreground rounded-full text-sm font-semibold border border-accent/30"
           >
-            <Sparkles className="w-4 h-4" />
+            {/* <Sparkles className="w-4 h-4" />
             New Arrivals Just Landed
-          </motion.div>
+          </motion.div> */}
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-primary-foreground">
             Creative Corner

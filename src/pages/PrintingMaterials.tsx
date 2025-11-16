@@ -1,54 +1,132 @@
 import Navigation from "@/components/Navigation";
-import { Button } from "@/components/ui/button";
-import businessCardsImg from "@/assets/product-business-cards.jpg";
-import flyersImg from "@/assets/product-flyers.jpg";
-import bannersImg from "@/assets/product-banners.jpg";
+import Footer from "@/components/Footer";
+import ProductCard from "@/components/ProductCard";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
+import { motion } from "framer-motion";
 
 const PrintingMaterials = () => {
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+
   const products = [
-    { name: "Business Cards", price: "$29.99", description: "Premium quality business cards, 100 pieces", image: businessCardsImg },
-    { name: "Flyers & Brochures", price: "$49.99", description: "Full color flyers, A4 size, 500 pieces", image: flyersImg },
-    { name: "Posters", price: "$19.99", description: "Large format posters, various sizes available", image: flyersImg },
-    { name: "Banners", price: "$89.99", description: "Vinyl banners for indoor/outdoor use", image: bannersImg },
-    { name: "Certificates", price: "$39.99", description: "Professional certificates with embossed seals", image: businessCardsImg },
-    { name: "Books & Booklets", price: "$99.99", description: "Custom printed books, perfect binding", image: flyersImg },
-    { name: "Invitations", price: "$34.99", description: "Premium wedding and event invitations", image: businessCardsImg },
-    { name: "Calendars", price: "$24.99", description: "Custom wall and desk calendars", image: flyersImg },
-    { name: "Labels & Stickers", price: "$15.99", description: "Custom labels and stickers, various sizes", image: businessCardsImg },
+    {
+      id: "printing-1",
+      title: "Premium Business Cards",
+      price: 29.99,
+      image: "/api/placeholder/300/300",
+      category: "printing-services",
+      description: "High-quality business cards, 100 pieces with premium finish",
+    },
+    {
+      id: "printing-2",
+      title: "Flyers & Brochures",
+      price: 49.99,
+      image: "/api/placeholder/300/300",
+      category: "printing-services",
+      description: "Full color flyers, A4 size, 500 pieces",
+    },
+    {
+      id: "printing-3",
+      title: "Large Format Posters",
+      price: 19.99,
+      image: "/api/placeholder/300/300",
+      category: "printing-services",
+      description: "Large format posters, various sizes available",
+    },
+    {
+      id: "printing-4",
+      title: "Vinyl Banners",
+      price: 89.99,
+      image: "/api/placeholder/300/300",
+      category: "printing-services",
+      description: "Vinyl banners for indoor/outdoor use",
+    },
+    {
+      id: "printing-5",
+      title: "Professional Certificates",
+      price: 39.99,
+      image: "/api/placeholder/300/300",
+      category: "printing-services",
+      description: "Professional certificates with embossed seals",
+    },
+    {
+      id: "printing-6",
+      title: "Books & Booklets",
+      price: 99.99,
+      image: "/api/placeholder/300/300",
+      category: "printing-services",
+      description: "Custom printed books, perfect binding",
+    },
+    {
+      id: "printing-7",
+      title: "Event Invitations",
+      price: 34.99,
+      image: "/api/placeholder/300/300",
+      category: "printing-services",
+      description: "Premium wedding and event invitations",
+    },
+    {
+      id: "printing-8",
+      title: "Custom Calendars",
+      price: 24.99,
+      image: "/api/placeholder/300/300",
+      category: "printing-services",
+      description: "Custom wall and desk calendars",
+    },
   ];
 
+  const handleViewProduct = (id: string) => {
+    navigate(`/product/${id}`);
+  };
+
+  const handleAddToCart = (id: string) => {
+    const product = products.find(p => p.id === id);
+    if (product) {
+      addToCart({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image,
+        category: product.category,
+      });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       <Navigation />
       
-      <main className="container mx-auto px-4 py-20">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Printing Materials</h1>
-        <p className="text-lg text-muted-foreground mb-12">
-          Professional printing services for all your business and personal needs. High-quality materials at competitive prices.
-        </p>
+      <main className="container mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12">
+        <div className="mb-6 sm:mb-8 md:mb-12">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent">
+            Printing Materials
+          </h1>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
+            Professional printing services for all your business and personal needs. High-quality materials at competitive prices.
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {products.map((product, index) => (
-            <div key={index} className="border border-border rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <div className="aspect-square bg-muted rounded-md mb-4 overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-              <p className="text-muted-foreground mb-4">{product.description}</p>
-              <div className="flex items-center justify-between">
-                <p className="text-2xl font-bold">{product.price}</p>
-                <Button>Order Now</Button>
-              </div>
-            </div>
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <ProductCard 
+                {...product}
+                onView={handleViewProduct}
+                onAddToCart={handleAddToCart}
+              />
+            </motion.div>
           ))}
         </div>
       </main>
       
-      <footer className="bg-primary text-primary-foreground py-12 mt-20">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 Creative Corner. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

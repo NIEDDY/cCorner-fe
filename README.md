@@ -1,40 +1,48 @@
-# Creative Corner - Professional Creative Equipment
+# Creative Corner
 
-A React-based e-commerce platform for creative professionals, built with modern web technologies.
+A modern e-commerce platform for printing services, stationery, office supplies, printers, cameras, and electronics. Built with React, TypeScript, and modern web technologies.
 
 ## Features
 
-- Professional equipment catalog for photographers, videographers, and creatives
-- Shopping cart functionality
-- Product categories and detailed product pages
-- Responsive design with Tailwind CSS
-- Modern UI components with shadcn/ui
+- **Product Browsing**: Browse products across multiple categories
+- **Shopping Cart**: Add items to cart and manage quantities
+- **Checkout**: Secure checkout process with payment integration
+- **Printing Services**: Professional printing services for business needs
+- **Multiple Categories**: 
+  - Printing Services
+  - Stationery
+  - Office Supplies
+  - Printers & Equipment
+  - Cameras & Photography
+  - Electronics & Storage
+- **Responsive Design**: Mobile-first responsive design
+- **Modern UI**: Built with shadcn/ui components and Tailwind CSS
 
 ## Technologies Used
 
-This project is built with:
-
 - **Vite** - Fast build tool and development server
 - **TypeScript** - Type-safe JavaScript
-- **React** - UI library
+- **React 18** - UI library
+- **React Router** - Client-side routing
 - **shadcn/ui** - Modern UI components
 - **Tailwind CSS** - Utility-first CSS framework
-- **React Router** - Client-side routing
+- **Framer Motion** - Animation library
 - **React Query** - Data fetching and state management
+- **Radix UI** - Accessible component primitives
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js (version 18 or higher)
-- npm or yarn package manager
+- npm, yarn, or pnpm package manager
 
 ### Installation
 
 1. Clone the repository:
 ```sh
 git clone <YOUR_GIT_URL>
-cd <YOUR_PROJECT_NAME>
+cd creative-corner
 ```
 
 2. Install dependencies:
@@ -66,20 +74,32 @@ npm run preview
 ```
 src/
 ├── components/     # Reusable UI components
-├── contexts/       # React contexts (e.g., CartContext)
-├── hooks/          # Custom React hooks
-├── lib/            # Utility functions and configurations
-├── pages/          # Page components and routing
+│   ├── ui/        # shadcn/ui components
+│   └── ...        # Custom components
+├── contexts/      # React contexts (CartContext)
+├── hooks/         # Custom React hooks
+├── lib/           # Utility functions
+├── pages/          # Page components
 └── assets/         # Static assets
 ```
 
-## Contributing
+## Key Pages
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+- **Home** (`/`) - Landing page with featured categories and services
+- **Products** (`/products`) - Product listing with search and filters
+- **Cart** (`/cart`) - Shopping cart management
+- **Checkout** (`/checkout`) - Checkout and payment process
+- **Services** (`/services`) - Printing and design services
+- **About** (`/about`) - About Creative Corner
+- **Contact** (`/contact`) - Contact information and form
+
+## Development
+
+The project uses:
+- ESLint for code linting
+- TypeScript for type safety
+- Tailwind CSS for styling
+- Vite for fast development and building
 
 ## License
 
